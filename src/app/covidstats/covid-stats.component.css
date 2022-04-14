@@ -1,0 +1,64 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section h1{
+    font-weight: 800;
+    padding: 1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+article {
+    display: flex;
+    flex-direction: row;
+}
+
+article mat-card {
+    justify-content: space-around;
+}
+
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+width: 100%;
+}
+
+input{
+    height: 30px;
+}
+
+
+/* Main structure */
+/* header {
+    grid-area: header;
+}
+
+.searchbar {
+    grid-area: searchbar;
+}
+
+.cards {
+    grid-area: cards;
+}
+
+.charts {
+    grid-area: charts;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas:
+        "header header header header"
+        "searchbar searchbar searchbar searchbar"
+        "cards cards cards cards"
+        "charts charts cards cards";
+} */
