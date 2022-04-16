@@ -1,26 +1,38 @@
 <section>
-    <h1>{{ title }} </h1>
+    <h1>{{ title }}</h1>
     <form class="form">
         <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Country</mat-label>
-            <input  type="text" color="black"
-                    placeholder="Type a country"
-                    aria-label="Country"
-                    matInput
-                    [formControl]="myControl"
-                    [matAutocomplete]="auto">
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)='getSelectedCountry($event)'>
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option}}
-                </mat-option>
-            </mat-autocomplete>
-            <mat-icon matSuffix>search</mat-icon>
+        <mat-label>Country</mat-label>
+        <input
+            type="text"
+            color="black"
+            placeholder="Type a country"
+            aria-label="Country"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+        />
+        <mat-autocomplete
+            autoActiveFirstOption
+            #auto="matAutocomplete"
+            (optionSelected)="getSelectedCountry($event)"
+        >
+            <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+            >
+            {{ option }}
+            </mat-option>
+        </mat-autocomplete>
+        <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
     </form>
-    <article>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-    </article>
-    <app-chart></app-chart>
+    <div class="cards" *ngIf="stats">
+        <article *ngFor="let stat of stats">
+            <app-card [subText]="stat.name" [stats]="stat.count"></app-card>
+        </article>
+    </div>
+    <div *ngIf="generalStats?.labels?.length !== 0">
+        <app-chart [generalStats]="generalStats"></app-chart>
+    </div>
 </section>

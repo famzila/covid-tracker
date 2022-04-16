@@ -12,13 +12,21 @@ section h1{
 }
 
 
-article {
+div.cards {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
-article mat-card {
+div.cards mat-card {
     justify-content: space-around;
+    width: 300px !important;
+}
+
+.mat-card{
+    width: 300px !important;
 }
 
 .form {

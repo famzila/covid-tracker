@@ -5,8 +5,6 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ICovidStats } from 'shared/interfaces/interfaces';
 
-// import { ICustomer, IOrder, IState, IPagedResults, IApiResponse } from '../../shared/interfaces';
-// import { UtilitiesService } from './utilities.service';
 
 @Injectable()
 export class DataService {
@@ -25,7 +23,7 @@ export class DataService {
     }
 
     getCovidStats(): Observable<ICovidStats[]> {
-        return this.http.get<ICovidStats[]>(`${this.API_URL}/statistics?country=all`)
+        return this.http.get<ICovidStats[]>(`${this.API_URL}/statistics`)
             .pipe(
                 map(res => {
                     const stats = res as ICovidStats[];
@@ -36,10 +34,9 @@ export class DataService {
     }
 
     getCovidStatsByCountry(country: string): Observable<ICovidStats[]> {
-        return this.http.get<ICovidStats[]>(`${this.API_URL}/statistics?countries?search=${country}`)
+        return this.http.get<ICovidStats[]>(`${this.API_URL}/statistics?country=${country}`)
             .pipe(
                 map(stats => {
-                    // this.calculateCustomersOrderTotal(customers);
                     return stats;
                 }),
                 catchError(this.handleError)
@@ -51,29 +48,8 @@ export class DataService {
         if (error.error instanceof Error) {
             const errMessage = error.error.message;
             return throwError(() => errMessage);
-            // Use the following instead if using lite-server
-            // return Observable.throw(err.text() || 'backend server error');
         }
         return throwError(() => error || 'Node.js server error');
     }
-
-//     GET /countries HTTP/1.1
-// X-Rapidapi-Host: covid-193.p.rapidapi.com
-// X-Rapidapi-Key: f6ac3734d4mshc3e97ae05773fa0p15abfcjsn4cd3b0a5cfd3
-// Host: covid-193.p.rapidapi.com
-
-    // Not using now but leaving since they show how to create
-    // and work with custom observables
-
-    // Would need following import added:
-    // import { Observer } from 'rxjs';
-
-    // createObservable(data: any): Observable<any> {
-    //     return Observable.create((observer: Observer<any>) => {
-    //         observer.next(data);
-    //         observer.complete();
-    //     });
-    // }
-    
 
 }

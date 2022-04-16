@@ -1,0 +1,19 @@
+{
+    "responsive": true,
+    "maintainAspectRatio": false,
+    "title": {
+        "display": true,
+        "position": "top",
+        "fontSize": 12,
+        "fontColor": "#666"
+    },
+    "legend": {
+        "display": true,
+        "position": "bottom",
+        "indexAxis": "y",
+        "labels": {
+            "fontColor": "#999",
+            "fontSize": 14
+        }
+    }
+}

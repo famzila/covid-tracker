@@ -2,7 +2,7 @@ export interface ICovidStats {
     country: string;
     cases: IStats;
     deaths: IStats;
-    total: number;
+    tests: IStats;
 }
 
 export interface IApiResponse {

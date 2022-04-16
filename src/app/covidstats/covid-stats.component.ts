@@ -1,8 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatOption } from '@angular/material/core';
-import { map, Observable, startWith } from 'rxjs';
+import { filter, map, Observable, startWith } from 'rxjs';
 import { ICovidStats } from 'shared/interfaces/interfaces';
 import { DataService } from 'shared/services/data.service';
 
@@ -12,50 +12,44 @@ import { DataService } from 'shared/services/data.service';
   styleUrls: ['./covid-stats.component.css']
 })
 export class CovidStatsComponent implements OnInit {
-  // @ViewChild('selectedOption') selectedOption: ElementRef;
 
+  @Input() countries: string[]= [];
+  @Input() stats: Array<{name: string, count: string}> | undefined;
+  @Input() generalStats: any;
+  @Output() selectedCountry = new EventEmitter<string>();
+  
   title: string= "Covid Stats";
-  countries: string[]= [];
-  stats: any;
   myControl = new FormControl();
   filteredOptions: Observable<string[]> | undefined;
 
-  constructor(private dataService: DataService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
     );
-    this.getCountries();
-    // this.getCovidStats();
-  }
-
-  getCountries() {
-    this.dataService.getCountries()
-        .subscribe((countries: any) => {
-          this.countries = countries.response;
-        },
-        (err: any) => console.error(err),
-        () => console.log("Done fetching countries"));
-  }
-
-  getCovidStats() {
-    this.dataService.getCovidStats()
-        .subscribe((response: ICovidStats[]) => {
-          this.stats = response;
-        },
-        (err: any) => console.error(err),
-        () => console.log('getCovidStats() retrieved stats'))
   }
   
-  getSelectedCountry(country: MatAutocompleteSelectedEvent) {
-    console.log(country.option.value);
+  /**
+   * Set the current selected country
+   * @param event the autocomplete event
+   */
+  getSelectedCountry(event: MatAutocompleteSelectedEvent) {
+    const country= event.option.value;
+    this.selectedCountry.emit(country);
   }
 
+  /**
+   * Filter the autocomplete list based on the typed text
+   * @param value  typed text
+   * @returns a filtered list
+   */
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    // console.log(this.selectedOption.nativeElement.value);
+    if(filterValue === ""){
+      this.selectedCountry.emit(filterValue);
+    }
     return this.countries.filter(country => country.toLowerCase().includes(filterValue));
   }
 }
