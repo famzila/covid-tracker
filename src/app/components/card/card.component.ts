@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { IStats } from 'shared/interfaces/interfaces';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',

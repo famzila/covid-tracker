@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges } from '@angular/core';
 import { Chart } from 'chart.js';
 import { GeneralStats } from 'shared/interfaces/interfaces';
 

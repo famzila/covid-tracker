@@ -1,11 +1,8 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { MatOption } from '@angular/material/core';
-import { filter, map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 import { GeneralStats, ICovidStats } from 'shared/interfaces/interfaces';
-import { DataService } from 'shared/services/data.service';
-
 @Component({
   selector: 'app-covid-stats',
   templateUrl: './covid-stats.component.html',

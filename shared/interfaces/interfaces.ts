@@ -1,14 +1,3 @@
-export interface ICovidStats {
-    country: string;
-    cases: IStats;
-    deaths: IStats;
-    tests: IStats;
-}
-
-export interface IApiResponse {
-    status: boolean;
-    error?: string;
-}
 
 export interface IStats {
     new?: string;
@@ -16,6 +5,13 @@ export interface IStats {
     critical?: number;
     recovered?: number;
     total?: number;
+}
+
+export interface ICovidStats {
+    country: string;
+    cases: IStats;
+    deaths: IStats;
+    tests: IStats;
 }
 
 export interface GeneralStats {
