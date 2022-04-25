@@ -1,9 +1,9 @@
 .chart-container {
-    /* background-color: rgba(69, 93, 198, 0.418); */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
+    padding-bottom: 30px;
 }
 
 canvas{

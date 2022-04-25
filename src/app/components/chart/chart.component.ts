@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } fro
 import { Chart } from 'chart.js';
 
 // const optionsConfig = require("../../config/chart-options.json");
-import * as optionsConfig from "../../config/chart-options.json";
+import * as optionsConfig from "../../../config/chart-options.json";
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',

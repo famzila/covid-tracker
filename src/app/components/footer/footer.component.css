@@ -1,0 +1,12 @@
+span{
+    display: flex;
+    justify-items: center;
+    justify-content: end;
+    padding-right: 30px;
+}
+
+span a {
+    padding-left: 3px;
+    padding-right: 3px;
+    font-weight: 800;
+}

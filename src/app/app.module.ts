@@ -19,12 +19,13 @@ import { NgChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { CardComponent } from './card/card.component';
-import { ChartComponent } from './chart/chart.component';
-import { CovidStatsComponent } from './covidstats/covid-stats.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CardComponent } from './components/card/card.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { CovidStatsComponent } from './components/covidstats/covid-stats.component';
 import { DataService } from 'shared/services/data.service';
 import { ApiInterceptor } from './core/interceptors/api-interceptor';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ApiInterceptor } from './core/interceptors/api-interceptor';
     NavbarComponent,
     CardComponent,
     ChartComponent,
-    CovidStatsComponent
+    CovidStatsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
