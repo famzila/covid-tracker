@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Chart } from 'chart.js';
+import { GeneralStats } from 'shared/interfaces/interfaces';
 
 // const optionsConfig = require("../../config/chart-options.json");
 import * as optionsConfig from "../../../config/chart-options.json";
@@ -9,7 +10,12 @@ import * as optionsConfig from "../../../config/chart-options.json";
   styleUrls: ['./chart.component.css'],
 })
 export class ChartComponent implements AfterViewInit, OnChanges {
-  @Input() generalStats: any;
+  @Input() generalStats: GeneralStats = {
+    labels: [],
+    confirmedArray: [],
+    criticalArray: [],
+    deathsArray: [],
+  };
 
   chart: any;
   data: any;
@@ -61,6 +67,7 @@ export class ChartComponent implements AfterViewInit, OnChanges {
   }
   
   /**
+   * Create the chart when coumponent's view was initialized
    * @inheritdoc
    */
   ngAfterViewInit() {

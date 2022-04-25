@@ -17,3 +17,10 @@ export interface IStats {
     recovered?: number;
     total?: number;
 }
+
+export interface GeneralStats {
+    labels: string[],
+    confirmedArray: number[],
+    criticalArray: number[],
+    deathsArray: number[],
+}

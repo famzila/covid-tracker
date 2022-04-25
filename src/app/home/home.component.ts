@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeneralStats } from 'shared/interfaces/interfaces';
 import { DataService } from 'shared/services/data.service';
 
 
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   selectedCountry: string = "";
   countries: string[]= [];
   stats: Array<{name: string, count: string}> | undefined;
-  generalStats: any = {
+  generalStats: GeneralStats = {
     labels: [],
     confirmedArray: [],
     criticalArray: [],

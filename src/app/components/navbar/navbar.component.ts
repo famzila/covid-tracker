@@ -7,4 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent {
   title: string= "COVID TRACKER";
+
+  handleGithubLink(){
+    window.location.href= "https://github.com/famzila/covid-tracker";
+  }
 }

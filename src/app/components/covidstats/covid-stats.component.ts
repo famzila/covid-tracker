@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatOption } from '@angular/material/core';
 import { filter, map, Observable, startWith } from 'rxjs';
-import { ICovidStats } from 'shared/interfaces/interfaces';
+import { GeneralStats, ICovidStats } from 'shared/interfaces/interfaces';
 import { DataService } from 'shared/services/data.service';
 
 @Component({
@@ -15,7 +15,12 @@ export class CovidStatsComponent implements OnInit {
 
   @Input() countries: string[]= [];
   @Input() stats: Array<{name: string, count: string}> | undefined;
-  @Input() generalStats: any;
+  @Input() generalStats: GeneralStats = {
+    labels: [],
+    confirmedArray: [],
+    criticalArray: [],
+    deathsArray: [],
+  };
   @Output() selectedCountry = new EventEmitter<string>();
   
   title: string= "Covid Stats";
